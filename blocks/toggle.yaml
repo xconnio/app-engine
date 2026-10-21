@@ -1,0 +1,27 @@
+# Reads whether something is on and flips it when activated.
+# Fields: label (on, off), icon (on, off; optional), read, toggle.
+# read and toggle return whether it is on.
+state:
+  on: false
+
+on_mount:
+  call: { param: read }
+  on_result:
+    set:
+      on: { bind: result }
+
+component:
+  type: button
+  label:
+    when: { bind: state.on }
+    then: { param: label.on }
+    else: { param: label.off }
+  icon:
+    when: { bind: state.on }
+    then: { param: icon.on }
+    else: { param: icon.off }
+  on_activate:
+    call: { param: toggle }
+    on_result:
+      set:
+        on: { bind: result }
