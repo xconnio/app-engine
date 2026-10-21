@@ -1,0 +1,14 @@
+# Shows a label, or the result of a procedure once it returns.
+# Fields: label (optional), read (optional).
+state:
+  value: { param: label }
+
+on_mount:
+  call: { param: read }
+  on_result:
+    set:
+      value: { bind: result }
+
+component:
+  type: text
+  label: { bind: state.value }
