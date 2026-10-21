@@ -1,0 +1,9 @@
+# Calls a procedure when activated.
+# Fields: label, icon (optional), call, arg (optional).
+component:
+  type: button
+  label: { param: label }
+  icon: { param: icon }
+  on_activate:
+    call: { param: call }
+    arg: { param: arg }
